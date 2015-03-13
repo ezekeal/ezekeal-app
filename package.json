@@ -1,0 +1,23 @@
+{
+  "name": "ezekeal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://www.github.com/ezekeal/ezekeal-app.git"
+  },
+  "author": "Zach Koch",
+  "license": "TBD",
+  "dependencies": {
+    "ecstatic": "^0.6.1",
+    "fs": "0.0.2",
+    "nunjucks": "^1.2.0",
+    "path": "^0.11.14",
+    "routes": "^2.0.0",
+    "trumpet": "^1.7.0"
+  }
+}
