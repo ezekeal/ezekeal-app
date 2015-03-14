@@ -1,16 +1,23 @@
-var http = require('http')
-  , ecstatic = require('ecstatic')(__dirname + '/static')
-  , router = require('routes')()
+var express = require('express')
+  , browserSync = require('browser-sync')
+  , app = express()
+  , port = process.env.PORT || 3400
 
-router.addRoute('/', function (req, res, params) {
-  res.end('welcome!')
+app.set('views', __dirname + '/public')
+app.set('view enginge', 'jade')
+app.use(express.static(__dirname + '/public'))
+
+// routes
+app.get('/', function (req, res) {
+  res.render('index')
 })
 
-var server = http.createServer(function (req, res) {
-  var m = router.match(req.url)
-  if (m) m.fn(req, res, m.params)
-  else ecstatic(req, res)
-}).listen( 3000, 'localhost', function () {
-  console.log('listening on :' + server.address().port);
+// start server
+.listen( port, 'localhost', function () {
+  if (app.get('env') == 'development') {
+    browserSync({
+      proxy: 'localhost:' + port,
+      files: ['public/**/*.{js,css,html}']
+    })
+  }
 })
-
