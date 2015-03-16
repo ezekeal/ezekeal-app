@@ -8,12 +8,10 @@ app.set('view enginge', 'jade')
 app.use(express.static(__dirname + '/public'))
 
 // routes
-app.get('/', function (req, res) {
-  res.render('index')
-})
+require('./routes.js')(app)
 
 // start server
-.listen( port, 'localhost', function () {
+app.listen( port, 'localhost', function () {
   if (app.get('env') == 'development') {
     browserSync({
       proxy: 'localhost:' + port,
