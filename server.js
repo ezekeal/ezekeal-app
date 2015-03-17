@@ -5,7 +5,7 @@ var express = require('express')
 
 app.set('views', __dirname + '/public')
 app.set('view enginge', 'jade')
-//app.use(express.static(__dirname + '/public'))
+app.use(express.static(__dirname + '/public'))
 
 // routes
 require('./routes.js')(app)
@@ -15,7 +15,7 @@ app.listen( port, 'localhost', function () {
   if (app.get('env') == 'development') {
     browserSync({
       proxy: 'localhost:' + port,
-      files: ['public/**/*.{js,css,html}']
+      files: ['public/**/*.{js,css,html,jade}']
     })
   }
 })
